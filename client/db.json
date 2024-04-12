@@ -1,0 +1,56 @@
+{
+  "restaurants": [
+    {
+      "name": "Tasty Bites",
+      "description": "A cozy restaurant serving delicious dishes.",
+      "photos": [
+        "https://picsum.photos/300",
+        "https://picsum.photos/300"
+      ]
+    },
+    {
+      "name": "Sizzle Grill",
+      "description": "An upscale steakhouse with a lively atmosphere.",
+      "photos": [
+        "https://picsum.photos/300",
+        "https://picsum.photos/300"
+      ]
+    }
+  ],
+  "bookings": [
+    {
+      "name": "Family Dinner",
+      "size": 6,
+      "dateTime": "2024-04-05T18:30:00Z"
+    },
+    {
+      "name": "Business Lunch",
+      "size": 4,
+      "dateTime": "2024-04-10T12:00:00Z"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "bookings": [
+        {
+          "name": "Family Dinner",
+          "size": 6,
+          "dateTime": "2024-04-05T18:30:00Z"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "bookings": [
+        {
+          "name": "Business Lunch",
+          "size": 4,
+          "dateTime": "2024-04-10T12:00:00Z"
+        }
+      ]
+    }
+  ]
+}
