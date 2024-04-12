@@ -13,7 +13,7 @@ export const MainContent = () => {
     const params = useParams();
 
     useEffect(() => {
-        const getAllData = async () => {
+        const getDataById = async () => {
             try {
                 const res = await axios.get(`http://localhost:8000/restaurants/${params.id}`);
                 console.log(res.data);
@@ -24,7 +24,7 @@ export const MainContent = () => {
             }
         };
 
-        getAllData();
+        getDataById();
     }, []);
 
     return (
@@ -42,7 +42,7 @@ export const MainContent = () => {
 
 
                 <article>
-                    <h3 className='text-2xl font-semibold pb-6'>
+                    <h3 className='text-2xl font-semibold pb-4'>
                         {data.name}
                     </h3>
                     <p>
@@ -51,19 +51,19 @@ export const MainContent = () => {
                 </article>
 
                 {/* img */}
-                <section>
-                    <h5 className='pb-4 font-medium'>
+                <section className='max-md:pb-14'>
+                    <h5 className='pb-4 font-semibold'>
                         Photos
                     </h5>
                     <div className='grid grid-cols-2 md:grid-cols-6 gap-4'>
-                        {/* <div className='relative w-full h-[200px]'>
+                        <div className='relative w-full h-[200px]'>
                             <Image
-                                src={data.photos[1]}
+                                src={data.photos?.[1]}
                                 fill
                                 alt='/img'
                                 className='object-cover'
                             />
-                        </div> */}
+                        </div>
                     </div>
                 </section>
             </div>
@@ -82,6 +82,7 @@ export const MainContent = () => {
                     Make a booking
                 </Button>
             </Link>
+
             {/* Mobile Button */}
             <Link
                 href='/booking'

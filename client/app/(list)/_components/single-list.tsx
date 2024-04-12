@@ -10,9 +10,14 @@ export const SingleList = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const res = await axios.get('http://localhost:8000/restaurants');
-            console.log(res.data);
-            setData(res.data);
+            try {
+                const res = await axios.get('http://localhost:8000/restaurants');
+                console.log(res.data);
+                setData(res.data);
+
+            } catch (error) {
+                console.log(error);
+            }
         }
 
         getData();

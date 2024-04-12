@@ -36,14 +36,14 @@ export default function CardLayout({
                     className='max-md:w-full'
                 />
 
-                <section>
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
+                <section className='w-full'>
+                    <CardContent className=''>
+                        <h3 className='text-xl font-semibold'>
                             {title}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        </h3>
+                        <p>
                             {desc}
-                        </Typography>
+                        </p>
 
                         <CardActions className='flex md:justify-between pl-0 flex-col md:flex-row max-md:gap-y-4 max-md:items-start'>
                             <Button
@@ -57,6 +57,9 @@ export default function CardLayout({
                                 variant='contained'
                                 size="small"
                                 className='max-md:w-full capitalize'
+                                sx={{
+                                    textTransform: 'none',
+                                }}
                             >
                                 <Link
                                     href={`/content/${id}`}

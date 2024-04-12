@@ -67,17 +67,11 @@ export default function TopBar() {
     const menuId = 'primary-search-account-menu';
     return (
         <>
-            <AppBar position="fixed" className='fixed max-h-[160px] h-[160px] w-full py-8 max-[425px]:px-4 px-10 lg:px-32 z-50'>
+            <AppBar className='fixed max-h-[160px] h-[160px] w-full py-8 max-[425px]:px-4 px-10 lg:px-32 z-50'>
                 <Toolbar className='px-0'>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                    >
-                        <Link href='/' className='font-bold'>
+                        <Link href='/' className='font-bold text-xl'>
                             TableBooking
                         </Link>
-                    </Typography>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box>
                         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
@@ -116,6 +110,9 @@ export default function TopBar() {
                         placeholder="Search…"
                         inputProps={{ 'aria-label': 'search' }}
                         className='w-full'
+                        sx={{
+                            textTransform: 'none'
+                        }}
                     />
                 </Search>
             </AppBar>
