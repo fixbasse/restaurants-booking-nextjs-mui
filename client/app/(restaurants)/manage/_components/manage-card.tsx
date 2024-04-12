@@ -1,11 +1,15 @@
+'use client'
+
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { Card, CardContent, CardMedia } from '@mui/material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useBookingStore } from '@/hooks/use-booking-store';
 
 export default function ManageBookingCard() {
+    const { cart } = useBookingStore();
+
     return (
         <div>
             <div className='mb-8'>
@@ -18,61 +22,74 @@ export default function ManageBookingCard() {
             </div>
 
             <Card>
-                <CardContent className='flex items-center justify-between'>
-                    <section className='flex items-center gap-8'>
-                        <CardMedia
-                            sx={{
-                                minHeight: 200,
-                                width: 400,
-                                objectFit: 'cover'
-                            }}
+                {cart.length
+                    ? cart.map((item) => (
 
-                            className='max-md:w-full border'
-                        />
-                        <div>
+                        <CardContent
+                            key={item.id}
+                            className='flex items-center justify-between'>
+                            <section className='flex items-center gap-8'>
+                                <CardMedia
+                                    sx={{
+                                        minHeight: 200,
+                                        width: 400,
+                                        objectFit: 'cover'
+                                    }}
 
-                            <h4 className='font-medium pb-2 text-xl underline flex gap-1'>
-                                Restaurant name
+                                    className='max-md:w-full border'
+                                />
+                                <div>
 
-                                <OpenInNewIcon className='cursor-pointer' />
-                            </h4>
+                                    <h4 className='font-medium pb-2 text-xl underline flex gap-1'>
+                                        Restaurant name
 
-                            <div>
-                                Name:
-                                <span className='pl-1'>
+                                        <OpenInNewIcon className='cursor-pointer' />
+                                    </h4>
 
-                                </span>
-                            </div>
-                            <div>
-                                Table size:
-                                <span className='pl-1'>
+                                    <div>
+                                        Name:
+                                        <span className='pl-1'>
+                                            {item.name}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        Table size:
+                                        <span className='pl-1'>
+                                            {item.size}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        Date:
+                                        <span className='pl-1'>
+                                            {item.date}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        Time:
+                                        <span className='pl-1'>
+                                            {item.time}
+                                        </span>
+                                    </div>
+                                </div>
 
-                                </span>
-                            </div>
-                            <div>
-                                Date:
-                                <span className='pl-1'>
-
-                                </span>
-                            </div>
-                            <div>
-                                Time:
-                                <span className='pl-1'>
-
-                                </span>
-                            </div>
+                            </section>
+                            {/* Button */}
+                            <Button
+                                type='submit'
+                                variant="contained"
+                                color='error'
+                            >
+                                <DeleteIcon />
+                            </Button>
+                        </CardContent>
+                    ))
+                    : (
+                        <div className='p-8 text-center font-bold text-2xl'>
+                            You don't have any booking.
                         </div>
+                    )
+                }
 
-                    </section>
-                    {/* Button */}
-                    <Button
-                        type='submit'
-                        variant="contained"
-                        color='error'
-                    >
-                        <DeleteIcon />
-                    </Button>
-                </CardContent>
             </Card>
         </div>
     );

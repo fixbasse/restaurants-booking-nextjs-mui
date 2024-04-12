@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { useBookingStore } from '@/hooks/use-booking-store';
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -13,7 +14,8 @@ const style = {
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 2,
-    border: '1px solid'
+    border: '1px solid',
+    borderRadius: '4px'
 };
 
 interface ModalLayoutProps {
@@ -34,6 +36,9 @@ export default function ModalLayout({
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const { add } = useBookingStore();
+
+    const booked = { name, size, date, time };
 
     return (
         <div>
@@ -53,12 +58,12 @@ export default function ModalLayout({
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <h4 className='text-xl font-semibold pb-2'>
+                    <h4 className='text-xl font-bold pb-2'>
                         Do you want to make this booking?
                     </h4>
 
                     <div>
-                        <h4  className='font-medium pb-2'>
+                        <h4 className='font-semibold pb-2'>
                             Restaurant name
                         </h4>
 
@@ -101,8 +106,9 @@ export default function ModalLayout({
                             cancel
                         </Button>
                         <Button
+                            disabled={!booked}
                             type='submit'
-                            onClick={handleOpen}
+                            onClick={() => add(booked)}
                             variant="contained"
                             className=""
                             sx={{

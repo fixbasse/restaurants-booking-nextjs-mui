@@ -6,14 +6,12 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import Link from 'next/link';
+import { useBookingStore } from '@/hooks/use-booking-store';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -56,48 +54,30 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function TopBar() {
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
-        React.useState<null | HTMLElement>(null);
-
-    const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
+    const { count } = useBookingStore();
 
     const menuId = 'primary-search-account-menu';
     return (
         <>
             <AppBar className='fixed max-h-[160px] h-[160px] w-full py-8 max-[425px]:px-4 px-10 lg:px-32 z-50'>
                 <Toolbar className='px-0'>
-                        <Link href='/' className='font-bold text-xl'>
-                            TableBooking
-                        </Link>
+                    <Link href='/' className='font-bold text-xl'>
+                        TableBooking
+                    </Link>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box>
-                        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="error">
-                                <MailIcon />
-                            </Badge>
-                        </IconButton>
-                        <IconButton
-                            size="large"
-                            aria-label="show 17 new notifications"
-                            color="inherit"
-                        >
-                            <Badge badgeContent={17} color="error">
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
                         <IconButton
                             size="large"
                             edge="end"
                             aria-label="account of current user"
                             aria-controls={menuId}
                             aria-haspopup="true"
-                            onClick={handleProfileMenuOpen}
                             color="inherit"
                         >
-                            <AccountCircle />
+                            <Badge badgeContent={count()} color="error">
+                                <AccountCircle />
+                            </Badge>
+
                         </IconButton>
                     </Box>
                 </Toolbar>

@@ -70,7 +70,7 @@ export const MainContent = () => {
 
             {/* Button */}
             <Link
-                href='/booking'
+                href={`/booking/${data.id}`}
                 className='mx-auto w-full text-center pt-4 hidden md:block'>
                 <Button
                     sx={{

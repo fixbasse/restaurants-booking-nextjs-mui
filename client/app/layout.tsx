@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Nunito } from "next/font/google";
 import "./globals.css";
 import TopBar from "@/components/top-bar";
+import Hydration from "@/components/hydration";
 
 const inter = Nunito({ subsets: ["latin"] });
 
@@ -18,13 +19,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Hydration>
 
-        {/* <Navbar /> */}
-        <TopBar />
-        <div className="max-[425px]:px-4 px-10 lg:px-32 pb-8 pt-[12rem]">
-          {children}
-        </div>
+          <TopBar />
+          <div className="max-[425px]:px-4 px-10 lg:px-32 pb-8 pt-[12rem]">
+            {children}
+          </div>
 
+        </Hydration>
       </body>
     </html>
   );

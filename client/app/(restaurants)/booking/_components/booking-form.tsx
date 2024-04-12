@@ -1,21 +1,26 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material'
 import ModalLayout from '@/components/modal';
 import { TableSize } from './table-size';
 import { Controller, FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { useBookingStore } from '@/hooks/use-booking-store';
+import axios from 'axios';
+import { bookingDataType } from '@/types/types';
+import { useParams } from 'next/navigation';
 
 export const BookingForm = () => {
     const [age, setAge] = React.useState('');
+    const [data, setData] = React.useState<bookingDataType | any>([]);
+    const params = useParams();
     const {
         control,
-        handleSubmit,
         setValue,
         watch
     } = useForm<FieldValues>({
         defaultValues: {
-            name: '',
+            //   name: '',
             size: '',
             date: '',
             time: ''
@@ -26,23 +31,25 @@ export const BookingForm = () => {
         setAge(event.target.value);
     };
 
-
     const name = watch('name');
     const size = watch('size');
     const date = watch('date');
     const time = watch('time');
 
+    useEffect(() => {
+        const getBookingData = async () => {
+            try {
+                const res = await axios.get(`http://localhost:8000/restaurants/${params.id}`);
+                console.log(res.data);
+                setData(res.data)
+            } catch (error) {
+                console.log(error);
+            }
+        };
 
-    const onSubmit: SubmitHandler<FieldValues> = async (values) => {
-        console.log(values);
-        //handleOpen();
+        getBookingData();
+    }, []);
 
-        // try {
-
-        // } catch (error) {
-
-        // }
-    }
 
     return (
         <div>
@@ -50,7 +57,7 @@ export const BookingForm = () => {
                 Make a booking for Restaurant name
             </h3>
 
-            <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-8 my-12'>
+            <form className='flex flex-col gap-8 my-12'>
                 <div className="w-full">
                     <h4 className='pb-4 font-medium'>
                         Name
@@ -59,7 +66,6 @@ export const BookingForm = () => {
                     <Controller
                         control={control}
                         name='name'
-                        defaultValue="" // need
                         rules={{
                             required: true
                         }}
@@ -67,10 +73,14 @@ export const BookingForm = () => {
                             <TextField
                                 {...field}
                                 type="text"
-                                className="w-full rounded-sm"
                                 variant="outlined"
                                 error={error !== undefined}
                                 autoFocus
+                                defaultValue={data.name}
+                                InputProps={{
+                                    readOnly: true,
+                                }}
+                                className="w-full rounded-sm"
                             />
                         )}
                     />
