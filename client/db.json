@@ -3,6 +3,7 @@
     {
       "name": "Tasty Bites",
       "description": "A cozy restaurant serving delicious dishes.",
+      "isBooked": true,
       "photos": [
         "https://picsum.photos/300",
         "https://picsum.photos/300"
@@ -11,6 +12,7 @@
     {
       "name": "Sizzle Grill",
       "description": "An upscale steakhouse with a lively atmosphere.",
+      "isBooked": false,
       "photos": [
         "https://picsum.photos/300",
         "https://picsum.photos/300"

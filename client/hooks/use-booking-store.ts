@@ -1,4 +1,4 @@
-import { bookingDataType, restaurantDataTypes } from '@/types/types';
+import { bookingDataType } from '@/types/types';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -8,7 +8,7 @@ interface CartItem extends bookingDataType {
 
 type CartStore = {
     cart: CartItem[],
-    count: () => number;
+    count: () => number | undefined;
     add: (product: bookingDataType) => void,
     remove: (idProduct: string) => void,
     removeAll: () => void
@@ -28,7 +28,7 @@ export const useBookingStore = create<CartStore>()(
                     return cart.map(item => item.count).reduce((prev, curr) => prev + curr);
                 }
 
-                return 0;
+                return;
             },
             add: (product: bookingDataType) => {
                 const { cart } = get();

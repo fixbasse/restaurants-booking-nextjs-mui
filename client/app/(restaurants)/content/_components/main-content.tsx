@@ -28,27 +28,29 @@ export const MainContent = () => {
     }, []);
 
     return (
-        <div className='flex flex-col justify-between h-[calc()]'>
+        <div className='flex flex-col justify-between'>
 
             <div className='flex flex-col gap-4'>
-                <div className='relative w-full h-[300px]'>
-                    <Image
-                        src={data.photos?.[0]}
-                        fill
-                        alt='/img'
-                        className='object-cover'
-                    />
-                </div>
+                {/* main */}
+                <section className='mb-3'>
+                    <div className='relative w-full h-[300px]'>
+                        <Image
+                            src={data.photos?.[0]}
+                            fill
+                            alt='/img'
+                            className='object-cover'
+                        />
+                    </div>
 
-
-                <article>
-                    <h3 className='text-2xl font-semibold pb-4'>
-                        {data.name}
-                    </h3>
-                    <p>
-                        {data.description}
-                    </p>
-                </article>
+                    <article className='mt-2'>
+                        <h3 className='max-md:text-xl text-2xl font-semibold pb-2'>
+                            {data.name}
+                        </h3>
+                        <p>
+                            {data.description}
+                        </p>
+                    </article>
+                </section>
 
                 {/* img */}
                 <section className='max-md:pb-14'>
@@ -56,6 +58,14 @@ export const MainContent = () => {
                         Photos
                     </h5>
                     <div className='grid grid-cols-2 md:grid-cols-6 gap-4'>
+                        <div className='relative w-full h-[200px]'>
+                            <Image
+                                src={data.photos?.[0]}
+                                fill
+                                alt='/img'
+                                className='object-cover'
+                            />
+                        </div>
                         <div className='relative w-full h-[200px]'>
                             <Image
                                 src={data.photos?.[1]}
@@ -85,7 +95,7 @@ export const MainContent = () => {
 
             {/* Mobile Button */}
             <Link
-                href='/booking'
+                href={`/booking/${data.id}`}
                 className='mx-auto w-full text-center pt-4 fixed left-0 bottom-0 py-4 max-[425px]:px-4 px-10 z-50 md:hidden bg-neutral-200'>
                 <Button
                     sx={{

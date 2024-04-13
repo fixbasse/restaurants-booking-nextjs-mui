@@ -34,10 +34,9 @@ export const TableSize = ({
                 <div
                     onClick={() => onClick(item.size)}
                     key={item.id}
-                    className={`border p-10 rounded-sm cursor-pointer hover:bg-neutral-50
-                    ${item.size === isSelected && 'bg-[#1976d2] text-white hover:bg-blue-500'}
+                    className={`border-2 border-black p-10 rounded-sm cursor-pointer flex justify-center
+                    ${item.size === isSelected && 'bg-[#1976d2] text-white'}
                     `}
-
                 >
                     {item.size}
                     <span className='pl-2'>

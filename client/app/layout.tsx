@@ -3,8 +3,10 @@ import { Inter, Nunito } from "next/font/google";
 import "./globals.css";
 import TopBar from "@/components/top-bar";
 import Hydration from "@/components/hydration";
+import { ThemeProvider } from "@mui/material";
+import theme from "@/components/theme";
 
-const inter = Nunito({ subsets: ["latin"] });
+//const inter = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Restaurants Booking",
@@ -18,13 +20,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <Hydration>
+          <ThemeProvider theme={theme}>
 
-          <TopBar />
-          <div className="max-[425px]:px-4 px-10 lg:px-32 pb-8 pt-[12rem]">
-            {children}
-          </div>
+            <TopBar />
+            <div className="max-[425px]:px-4 px-10 lg:px-32 2xl:px-52 pb-8 pt-[12rem]">
+              {children}
+            </div>
+          </ThemeProvider>
 
         </Hydration>
       </body>

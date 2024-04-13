@@ -4,14 +4,14 @@ import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Link from 'next/link';
 import { useBookingStore } from '@/hooks/use-booking-store';
+import { usePathname } from 'next/navigation';
+import { Button } from '@mui/material';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -55,47 +55,53 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function TopBar() {
     const { count } = useBookingStore();
+    const pathname = usePathname();
 
-    const menuId = 'primary-search-account-menu';
     return (
-        <>
-            <AppBar className='fixed max-h-[160px] h-[160px] w-full py-8 max-[425px]:px-4 px-10 lg:px-32 z-50'>
-                <Toolbar className='px-0'>
-                    <Link href='/' className='font-bold text-xl'>
-                        TableBooking
-                    </Link>
-                    <Box sx={{ flexGrow: 1 }} />
-                    <Box>
-                        <IconButton
-                            size="large"
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-controls={menuId}
-                            aria-haspopup="true"
-                            color="inherit"
+        <AppBar className='fixed max-h-[160px] w-full py-8 max-[425px]:px-4 px-10 lg:px-32 2xl:px-52 z-50'>
+            <div className='flex items-center justify-between'>
+                <Link href='/' className='font-bold text-xl'>
+                    TableBooking
+                </Link>
+
+                <Link href='/manage'>
+                    <span className='block md:hidden'>
+                        <Badge
+                            badgeContent={count()}
+                            color="error"
                         >
-                            <Badge badgeContent={count()} color="error">
-                                <AccountCircle />
-                            </Badge>
+                            <AccountCircle />
+                        </Badge>
+                    </span>
+                    <span className='max-md:hidden'>
+                        <Button
+                            variant='contained'
+                            sx={{ textTransform: 'none' }}
+                        >
 
-                        </IconButton>
-                    </Box>
-                </Toolbar>
+                            manage booking ({count()})
+                        </Button>
+                    </span>
+                </Link>
+            </div>
 
-                <Search className='w-[400px] mx-auto'>
+            {/* Search Input */}
+            <div className={`md:w-[400px] mx-auto mt-8
+                ${pathname !== '/' && 'hidden'}
+                `}>
+                <Search>
                     <SearchIconWrapper>
                         <SearchIcon />
                     </SearchIconWrapper>
+
                     <StyledInputBase
-                        placeholder="Search…"
-                        inputProps={{ 'aria-label': 'search' }}
-                        className='w-full'
-                        sx={{
-                            textTransform: 'none'
+                        placeholder="search a restaurant"
+                        inputProps={{
+                            'aria-label': 'search'
                         }}
                     />
                 </Search>
-            </AppBar>
-        </>
+            </div>
+        </AppBar >
     );
 }

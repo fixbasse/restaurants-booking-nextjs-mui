@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import CardLayout from '@/components/card'
 import { restaurantDataTypes } from '@/types/types';
+import CardList from './card-list';
 
 export const SingleList = () => {
     const [data, setData] = useState<restaurantDataTypes | any>([]);
@@ -26,12 +26,14 @@ export const SingleList = () => {
     return (
         <div className='grid md:grid-cols-2 gap-8'>
             {data.map((item: any) => (
-                <CardLayout
-                    key={item.id}
-                    title={item.name}
-                    img={item.photos[0]}
-                    desc={item.description}
-                    id={item.id}
+                <CardList
+                    key={item.name}
+                    item={item}
+                    // title={item.name}
+                    // img={item.photos[0]}
+                    // desc={item.description}
+                    // id={item.id}
+                    // isBooked={item.isBooked}
                 />
             ))}
         </div>

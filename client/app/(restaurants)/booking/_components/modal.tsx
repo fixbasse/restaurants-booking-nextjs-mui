@@ -1,44 +1,48 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { Dayjs } from 'dayjs';
 import { useBookingStore } from '@/hooks/use-booking-store';
 
-const style = {
-    position: 'absolute' as 'absolute',
-    top: '20%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    boxShadow: 24,
-    p: 2,
-    border: '1px solid',
-    borderRadius: '4px'
-};
-
-interface ModalLayoutProps {
-    trigger: string;
+interface BookingModalProps {
+    restaurantName: string;
     name: string;
     size: string;
-    date: string;
-    time?: string;
-}
+    date?: Dayjs | null;
+    time?: Dayjs | null;
+    id: string;
+    img: string;
+};
 
-export default function ModalLayout({
-    trigger,
+// *
+export default function BookingModal({
+    restaurantName,
     name,
     size,
     date,
-    time
-}: ModalLayoutProps) {
+    time,
+    id,
+    img,
+}: BookingModalProps) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const { add } = useBookingStore();
 
-    const booked = { name, size, date, time };
+    const booked = {
+        name,
+        size,
+        date,
+        time,
+        id,
+        restaurantName,
+        img
+    };
+
+    const handleSubmit = (booked: any) => {
+        add(booked);
+        handleClose();
+    };
 
     return (
         <div>
@@ -49,56 +53,59 @@ export default function ModalLayout({
                     textTransform: 'none'
                 }}
             >
-                {trigger}
+                make a booking
             </Button>
             <Modal
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
+                className='flex flex-col items-center'
             >
-                <Box sx={style}>
+                <div className='bg-white w-200 min-[425px]:w-[400px] border-2 border-black p-4 m-4 rounded-sm t absolute top-20'>
                     <h4 className='text-xl font-bold pb-2'>
                         Do you want to make this booking?
                     </h4>
 
                     <div>
-                        <h4 className='font-semibold pb-2'>
-                            Restaurant name
+                        <h4 className='font-semibold'>
+                            {restaurantName}
                         </h4>
 
                         <div>
                             Name:
                             <span className='pl-1'>
-                                {name}
+                                {!name ? '-' : name}
                             </span>
                         </div>
                         <div>
                             Table size:
                             <span className='pl-1'>
-                                {size}
+                                {!size ? '-' : size}
+
+                                {/* {size.length > 1 ? 'people' : 'person'} */}
                             </span>
                         </div>
                         <div>
                             Date:
                             <span className='pl-1'>
-                                {date}
+                                {date?.format('D/MM/YYYY')}
                             </span>
                         </div>
                         <div>
                             Time:
                             <span className='pl-1'>
-                                {time}
+                                {time?.format('HH:mm')}
                             </span>
                         </div>
                     </div>
 
                     {/* Button */}
-                    <div className='flex items-center justify-end gap-2'>
+                    <div className='flex items-center justify-end gap-2 mt-3'>
                         <Button
+                            type='submit'
                             onClick={handleClose}
                             variant="contained"
-                            className="bg-neutral-300 text-black"
                             sx={{
                                 textTransform: 'none'
                             }}
@@ -106,11 +113,10 @@ export default function ModalLayout({
                             cancel
                         </Button>
                         <Button
-                            disabled={!booked}
+                            disabled={!booked.name || !booked.size || !booked.date || !booked.time}
                             type='submit'
-                            onClick={() => add(booked)}
+                            onClick={() => handleSubmit(booked)}
                             variant="contained"
-                            className=""
                             sx={{
                                 textTransform: 'none'
                             }}
@@ -118,7 +124,7 @@ export default function ModalLayout({
                             confirm
                         </Button>
                     </div>
-                </Box>
+                </div>
             </Modal>
         </div>
     );
