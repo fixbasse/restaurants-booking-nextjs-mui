@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { Dayjs } from 'dayjs';
 import { useBookingStore } from '@/hooks/use-booking-store';
+import { redirect, useRouter } from 'next/navigation';
 
 interface BookingModalProps {
     restaurantName: string;
@@ -28,6 +29,7 @@ export default function BookingModal({
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const { add } = useBookingStore();
+    const router = useRouter();
 
     const booked = {
         name,
@@ -41,7 +43,7 @@ export default function BookingModal({
 
     const handleSubmit = (booked: any) => {
         add(booked);
-        handleClose();
+        router.push('/')
     };
 
     return (
@@ -62,7 +64,7 @@ export default function BookingModal({
                 aria-describedby="modal-modal-description"
                 className='flex flex-col items-center'
             >
-                <div className='bg-white w-200 min-[425px]:w-[400px] border-2 border-black p-4 m-4 rounded-sm t absolute top-20'>
+                <div className='bg-white w-200 min-[425px]:w-[500px] border-2 border-black p-4 m-4 rounded-sm t absolute top-20'>
                     <h4 className='text-xl font-bold pb-2'>
                         Do you want to make this booking?
                     </h4>

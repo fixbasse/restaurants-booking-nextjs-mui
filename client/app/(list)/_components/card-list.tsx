@@ -12,7 +12,7 @@ export default function CardList({
     item
 }: CardListProps) {
     return (
-        <div className='border shadow-sm'>
+        <div className='border-2 border-black'>
             <div className='flex flex-col md:flex-row items-center'>
                 {/* Img */}
                 <CardMedia

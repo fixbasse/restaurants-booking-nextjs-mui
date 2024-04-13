@@ -13,6 +13,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs, { Dayjs } from 'dayjs';
 import { TimePicker } from '@mui/x-date-pickers';
 import BookingModal from './modal';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 // *
 export const BookingForm = () => {
@@ -75,8 +76,10 @@ export const BookingForm = () => {
                                 type="text"
                                 variant="outlined"
                                 error={error !== undefined}
-                                autoFocus
-                                className="w-full rounded-sm"
+                                //autoFocus
+                                size='small'
+                                fullWidth
+                                sx={{ border: '2px solid' }}
                             />
                         )}
                     />
@@ -107,7 +110,10 @@ export const BookingForm = () => {
                                 value={day}
                                 onChange={(newDay) => setDay(newDay)}
                                 format={'DD/MM/YYYY'}
-                                className='w-full'
+                                slotProps={{
+                                    textField: { size: 'small' }
+                                }}
+                                sx={{ border: '2px solid' }}
                             />
                         </LocalizationProvider>
                     </div>
@@ -124,6 +130,11 @@ export const BookingForm = () => {
                                 onChange={(newTime) => setTime(newTime)}
                                 format={'hh:mm'}
                                 className='w-full'
+                                slotProps={{
+                                    textField: { size: 'small' },
+                                    //  openPickerIcon: KeyboardArrowDownIcon
+                                }}
+                                sx={{ border: '2px solid' }}
                             />
                         </LocalizationProvider>
                     </div>

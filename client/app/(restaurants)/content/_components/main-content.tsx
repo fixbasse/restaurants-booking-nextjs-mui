@@ -31,14 +31,14 @@ export const MainContent = () => {
         <div className='flex flex-col justify-between'>
 
             <div className='flex flex-col gap-4'>
-                {/* main */}
+                {/* MAIN */}
                 <section className='mb-3'>
                     <div className='relative w-full h-[300px]'>
                         <Image
                             src={data.photos?.[0]}
                             fill
                             alt='/img'
-                            className='object-cover'
+                            className='object-cover border-2 border-black'
                         />
                     </div>
 
@@ -53,7 +53,7 @@ export const MainContent = () => {
                 </section>
 
                 {/* img */}
-                <section className='max-md:pb-14'>
+                <section className='max-md:pb-20'>
                     <h5 className='pb-4 font-semibold'>
                         Photos
                     </h5>
@@ -63,7 +63,7 @@ export const MainContent = () => {
                                 src={data.photos?.[0]}
                                 fill
                                 alt='/img'
-                                className='object-cover'
+                                className='object-cover border-2 border-black'
                             />
                         </div>
                         <div className='relative w-full h-[200px]'>
@@ -71,7 +71,7 @@ export const MainContent = () => {
                                 src={data.photos?.[1]}
                                 fill
                                 alt='/img'
-                                className='object-cover'
+                                className='object-cover border-2 border-black'
                             />
                         </div>
                     </div>
@@ -96,11 +96,9 @@ export const MainContent = () => {
             {/* Mobile Button */}
             <Link
                 href={`/booking/${data.id}`}
-                className='mx-auto w-full text-center pt-4 fixed left-0 bottom-0 py-4 max-[425px]:px-4 px-10 z-50 md:hidden bg-neutral-200'>
+                className='w-full text-center h-[80px] flex items-center fixed left-0 bottom-0 max-[425px]:px-4 px-10 z-50 md:hidden bg-neutral-200'>
                 <Button
-                    sx={{
-                        textTransform: 'none'
-                    }}
+                    sx={{ textTransform: 'none' }}
                     variant='contained'
                     className='max-md:w-full'
                 >

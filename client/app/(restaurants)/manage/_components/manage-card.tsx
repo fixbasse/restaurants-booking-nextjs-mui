@@ -22,12 +22,12 @@ export default function ManageBookingCard() {
                 </h5>
             </header>
 
-            <div className='border'>
+            <div className='flex flex-col gap-8'>
                 {cart.length
                     ? cart.map((item) => (
                         <div
                             key={item.id}
-                            className='max-md:pb-4 flex flex-col max-md:items-start md:flex-row items-center gap-8 max-md:gap-4 w-full'
+                            className='max-md:pb-4 border-2 border-black flex flex-col max-md:items-start md:flex-row items-center gap-8 max-md:gap-4 w-full'
                         >
                             <CardMedia
                                 image={item.img?.[0]}
