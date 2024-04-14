@@ -40,6 +40,7 @@ export default function CardList({
                                     variant='contained'
                                     size="small"
                                     color='error'
+                                    sx={{ textTransform: 'none' }}
                                 >
                                     booked
                                 </Button>
@@ -49,9 +50,7 @@ export default function CardList({
                                         variant='contained'
                                         size="small"
                                         className='max-md:w-full'
-                                        sx={{
-                                            textTransform: 'none',
-                                        }}
+                                        sx={{ textTransform: 'none' }}
                                     >
                                         <Link
                                             href={`/content/${item.id}`}
