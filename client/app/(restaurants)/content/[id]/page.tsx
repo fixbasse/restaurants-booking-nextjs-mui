@@ -2,7 +2,7 @@ import { MainContent } from "../_components/main-content"
 
 const RestaurantPage = () => {
   return (
-    <div>
+    <div className="pt-[7rem] md:pt-[8rem]">
       <MainContent />
     </div>
   )

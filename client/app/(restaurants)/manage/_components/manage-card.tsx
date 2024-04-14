@@ -35,7 +35,6 @@ export default function ManageBookingCard() {
             isBooked: !item.isBooked
         } : item);
         setData(bookedItem);
-        console.log(bookedItem);
 
         const myBooked = bookedItem.id === id;
         const updateOptions = {
@@ -50,11 +49,9 @@ export default function ManageBookingCard() {
         await fetch(reqUrl, updateOptions)
     };
 
-    const handleDelete = (id: any) => {
-        const listItem = cart.filter((item) => item.id)
+    const handleDelete = (id: string) => {
         cancelBooked(id);
         remove(id);
-        // remove(listItem);
     };
 
     return (
@@ -79,7 +76,6 @@ export default function ManageBookingCard() {
                                 image={item.img?.[0]}
                                 sx={{
                                     minHeight: 200,
-
                                     objectFit: 'cover'
                                 }}
 
@@ -101,7 +97,7 @@ export default function ManageBookingCard() {
                                 <div>
                                     Table size:
                                     <span className='pl-1'>
-                                        {item.size} {item.size.length > 1 ? 'people' : 'person'}
+                                        {item.size} {item.size > '1' ? 'people' : 'person'}
                                     </span>
                                 </div>
                                 <div>

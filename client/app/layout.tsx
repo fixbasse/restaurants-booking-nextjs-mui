@@ -25,7 +25,7 @@ export default function RootLayout({
           <ThemeProvider theme={theme}>
 
             <TopBar />
-            <div className="max-[425px]:px-4 px-10 lg:px-32 2xl:px-52 pb-8 pt-[12rem]">
+            <div className="max-[425px]:px-4 px-10 lg:px-32 2xl:px-52 pb-8">
               {children}
             </div>
           </ThemeProvider>

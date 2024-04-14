@@ -1,9 +1,11 @@
+'use client'
+
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { Dayjs } from 'dayjs';
 import { useBookingStore } from '@/hooks/use-booking-store';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { bookingDataType } from '@/types/types';
 
 interface BookingModalProps {
@@ -111,9 +113,7 @@ export default function BookingModal({
                         <div>
                             Table size:
                             <span className='pl-1'>
-                                {!size ? '-' : size}
-
-                                {/* {size.length > 1 ? 'people' : 'person'} */}
+                                {!size ? '-' : size} {size > '1' ? 'people' : 'person'}
                             </span>
                         </div>
                         <div>

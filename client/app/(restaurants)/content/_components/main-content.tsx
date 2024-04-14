@@ -33,14 +33,16 @@ export const MainContent = () => {
             <div className='flex flex-col gap-4'>
                 {/* MAIN */}
                 <section className='mb-3'>
-                    <div className='relative w-full h-[300px]'>
-                        <Image
-                            src={data.photos?.[0]}
-                            fill
-                            alt='/img'
-                            className='object-cover border-2 border-black'
-                        />
-                    </div>
+                    {data.photos && (
+                        <div className='relative w-full h-[300px]'>
+                            <Image
+                                src={data.photos?.[0]}
+                                fill
+                                alt='/img'
+                                className='object-cover border-2 border-black'
+                            />
+                        </div>
+                    )}
 
                     <article className='mt-2'>
                         <h3 className='max-md:text-xl text-2xl font-semibold pb-2'>
@@ -57,24 +59,28 @@ export const MainContent = () => {
                     <h5 className='pb-4 font-semibold'>
                         Photos
                     </h5>
-                    <div className='grid grid-cols-2 md:grid-cols-6 gap-4'>
-                        <div className='relative w-full h-[200px]'>
-                            <Image
-                                src={data.photos?.[0]}
-                                fill
-                                alt='/img'
-                                className='object-cover border-2 border-black'
-                            />
+
+                    {data.photos && (
+                        <div className='grid grid-cols-2 md:grid-cols-6 gap-4'>
+                            <div className='relative w-full h-[200px]'>
+                                <Image
+                                    src={data.photos?.[0]}
+                                    fill
+                                    alt='/img'
+                                    className='object-cover border-2 border-black'
+                                />
+                            </div>
+                            <div className='relative w-full h-[200px]'>
+                                <Image
+                                    src={data.photos?.[1]}
+                                    fill
+                                    alt='/img'
+                                    className='object-cover border-2 border-black'
+                                />
+                            </div>
                         </div>
-                        <div className='relative w-full h-[200px]'>
-                            <Image
-                                src={data.photos?.[1]}
-                                fill
-                                alt='/img'
-                                className='object-cover border-2 border-black'
-                            />
-                        </div>
-                    </div>
+                    )}
+
                 </section>
             </div>
 

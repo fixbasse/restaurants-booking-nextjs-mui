@@ -3,7 +3,6 @@
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import SearchIcon from '@mui/icons-material/Search';
@@ -73,14 +72,24 @@ export default function TopBar() {
                             <AccountCircle />
                         </Badge>
                     </span>
-                    <span className='max-md:hidden'>
-                        <Button
-                            variant='contained'
-                            sx={{ textTransform: 'none' }}
-                        >
-                            manage booking ({count()})
-                        </Button>
-                    </span>
+
+                    <div className='max-md:hidden'>
+                        {count() >= 1 ? (
+                            <Button
+                                variant='contained'
+                                sx={{ textTransform: 'none' }}
+                            >
+                                manage booking ({count()})
+                            </Button>
+                        ) : (
+                            <Button
+                                variant='contained'
+                                sx={{ textTransform: 'none' }}
+                            >
+                                manage booking
+                            </Button>
+                        )}
+                    </div>
                 </Link>
             </div>
 

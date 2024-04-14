@@ -3,7 +3,7 @@ import { BookingForm } from '../_components/form'
 
 const BookingPage = () => {
     return (
-        <div>
+        <div className="pt-[7rem] md:pt-[8rem]">
             <BookingForm />
         </div>
     )

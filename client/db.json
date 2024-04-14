@@ -3,7 +3,7 @@
     {
       "name": "Tasty Bites",
       "description": "A cozy restaurant serving delicious dishes.",
-      "isBooked": true,
+      "isBooked": false,
       "photos": [
         "https://picsum.photos/300",
         "https://picsum.photos/300"
