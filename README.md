@@ -1,6 +1,8 @@
 This project is using nextJS with tailwindCSS, MUI and json-server
 
-at db.json file, isBooked was add for identified a booked restaurant.
+-Changes
+1. restaurants_sample -> db.json
+2. At db.json file, isBooked was add to identified a booked restaurant.
 
 To start a peoject
 npm install
