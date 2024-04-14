@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter, Nunito } from "next/font/google";
 import "./globals.css";
 import TopBar from "@/components/top-bar";
 import Hydration from "@/components/hydration";
