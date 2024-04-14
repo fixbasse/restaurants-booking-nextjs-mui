@@ -21,7 +21,6 @@ export default function CardList({
                         objectFit: 'cover'
                     }}
                     image={item.photos[0]}
-                    //title={imgLabel}
                     className='max-md:w-full w-[400px]'
                 />
 
@@ -34,29 +33,7 @@ export default function CardList({
                             {item.description}
                         </p>
 
-                        <div className='flex mt-4 flex-col md:flex-row justify-between max-md:gap-y-2 max-md:items-start'>
-                            {/* <Button
-                                variant='contained'
-                                size="small"
-                                color='error'
-                                sx={{ textTransform: 'none', border: '1px solid' }}
-                            >
-                                booked
-                            </Button>
-
-                            <Button
-                                variant='contained'
-                                size="small"
-                                sx={{ textTransform: 'none' }}
-                                className='max-md:w-full'
-                            >
-                                <Link
-                                    href={`/content/${item.id}`}
-                                    className='w-full'>
-                                    select
-                                </Link>
-                            </Button> */}
-
+                        <div className='flex mt-4 flex-col md:flex-row max-md:gap-y-2 max-md:items-start'>
                             {/* isBooked */}
                             {item.isBooked === true ? (
                                 <Button
@@ -67,20 +44,22 @@ export default function CardList({
                                     booked
                                 </Button>
                             ) : (
-                                <Button
-                                    variant='contained'
-                                    size="small"
-                                    className='max-md:w-full capitalize'
-                                    sx={{
-                                        textTransform: 'none',
-                                    }}
-                                >
-                                    <Link
-                                        href={`/content/${item.id}`}
-                                        className='w-full'>
-                                        select
-                                    </Link>
-                                </Button>
+                                <div className='ml-auto max-md:w-full'>
+                                    <Button
+                                        variant='contained'
+                                        size="small"
+                                        className='max-md:w-full'
+                                        sx={{
+                                            textTransform: 'none',
+                                        }}
+                                    >
+                                        <Link
+                                            href={`/content/${item.id}`}
+                                            className='w-full'>
+                                            select
+                                        </Link>
+                                    </Button>
+                                </div>
                             )}
 
                         </div>

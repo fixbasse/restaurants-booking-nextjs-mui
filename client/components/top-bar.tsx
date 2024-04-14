@@ -52,6 +52,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
+// *
 export default function TopBar() {
     const { count } = useBookingStore();
     const pathname = usePathname();
@@ -74,7 +75,7 @@ export default function TopBar() {
                     </span>
 
                     <div className='max-md:hidden'>
-                        {count() >= 1 ? (
+                        {count() ? (
                             <Button
                                 variant='contained'
                                 sx={{ textTransform: 'none' }}

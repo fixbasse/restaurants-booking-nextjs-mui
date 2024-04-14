@@ -1,4 +1,4 @@
-This project is using nextJS with tailwindCSS, MUI and json-server
+This project is using nextJS with tailwindCSS, MUI, json-server and zustand (stage)
 
 -Changes
 1. restaurants_sample -> db.json

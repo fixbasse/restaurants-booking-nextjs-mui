@@ -78,7 +78,6 @@ export default function ManageBookingCard() {
                                     minHeight: 200,
                                     objectFit: 'cover'
                                 }}
-
                                 className='max-md:w-full w-[400px] border'
                             />
 
@@ -129,7 +128,7 @@ export default function ManageBookingCard() {
                         </div>
                     ))
                     : (
-                        <div className='p-8 text-center text-xl'>
+                        <div className='p-8 text-center border-2 border-black rounded-sm'>
                             You don't have any booking.
                         </div>
                     )

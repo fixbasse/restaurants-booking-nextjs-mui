@@ -6,7 +6,7 @@ interface CartItem extends bookingDataType {
     count: number;
 };
 
-type CartStore = {
+export type CartStore = {
     cart: CartItem[],
     count: () => number | undefined;
     add: (product: bookingDataType) => void,

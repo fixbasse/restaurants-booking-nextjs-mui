@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import TopBar from "@/components/top-bar";
 import Hydration from "@/components/hydration";
 import { ThemeProvider } from "@mui/material";
-import theme from "@/components/theme";
+import theme from "@/app/theme";
+import TopBar from "@/components/top-bar";
 
 //const inter = Nunito({ subsets: ["latin"] });
 
