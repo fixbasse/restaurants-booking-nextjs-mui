@@ -7,7 +7,8 @@
       "photos": [
         "https://picsum.photos/300",
         "https://picsum.photos/300"
-      ]
+      ],
+      "id": "b17b"
     },
     {
       "name": "Sizzle Grill",
@@ -16,24 +17,27 @@
       "photos": [
         "https://picsum.photos/300",
         "https://picsum.photos/300"
-      ]
+      ],
+      "id": "7bb5"
     }
   ],
   "bookings": [
     {
       "name": "Family Dinner",
       "size": 6,
-      "dateTime": "2024-04-05T18:30:00Z"
+      "dateTime": "2024-04-05T18:30:00Z",
+      "id": "e69e"
     },
     {
       "name": "Business Lunch",
       "size": 4,
-      "dateTime": "2024-04-10T12:00:00Z"
+      "dateTime": "2024-04-10T12:00:00Z",
+      "id": "880b"
     }
   ],
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "John Doe",
       "bookings": [
         {
@@ -44,7 +48,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Jane Smith",
       "bookings": [
         {

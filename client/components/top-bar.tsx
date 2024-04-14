@@ -78,7 +78,6 @@ export default function TopBar() {
                             variant='contained'
                             sx={{ textTransform: 'none' }}
                         >
-
                             manage booking ({count()})
                         </Button>
                     </span>

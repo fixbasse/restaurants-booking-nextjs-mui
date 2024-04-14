@@ -4,6 +4,7 @@ import Modal from '@mui/material/Modal';
 import { Dayjs } from 'dayjs';
 import { useBookingStore } from '@/hooks/use-booking-store';
 import { redirect, useRouter } from 'next/navigation';
+import { bookingDataType } from '@/types/types';
 
 interface BookingModalProps {
     restaurantName: string;
@@ -13,6 +14,8 @@ interface BookingModalProps {
     time?: Dayjs | null;
     id: string;
     img: string;
+    item: bookingDataType;
+    setItem: React.Dispatch<any>;
 };
 
 // *
@@ -24,6 +27,8 @@ export default function BookingModal({
     time,
     id,
     img,
+    item,
+    setItem
 }: BookingModalProps) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -41,9 +46,32 @@ export default function BookingModal({
         img
     };
 
+    // toggle isBooked = true
+    const booking = async (id: string) => {
+        const bookedItem = item.id === id ? {
+            ...item,
+            isBooked: !item.isBooked
+        } : item;
+
+        setItem(bookedItem);
+
+        const myBooked = bookedItem.id === id;
+        const updateOptions = {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ isBooked: myBooked })
+        };
+
+        const reqUrl = `http://localhost:8000/restaurants/${id}`;
+        await fetch(reqUrl, updateOptions)
+    };
+
     const handleSubmit = (booked: any) => {
         add(booked);
-        router.push('/')
+        booking(id);
+        router.push('/');
     };
 
     return (

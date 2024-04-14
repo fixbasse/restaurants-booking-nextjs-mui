@@ -50,8 +50,6 @@ export const BookingForm = () => {
         getBookingData();
     }, []);
 
-    //console.log(time);
-
     return (
         <div>
             <h3 className='text-3xl font-semibold'>
@@ -149,6 +147,8 @@ export const BookingForm = () => {
                     time={time}
                     id={data.id} // only store
                     img={data.photos} // only store
+                    item={data}
+                    setItem={setData}
                 />
             </form>
 

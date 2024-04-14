@@ -34,8 +34,8 @@ export default function CardList({
                             {item.description}
                         </p>
 
-                        <div className='flex mt-4 flex-col md:flex-row md:justify-between max-md:gap-y-2 max-md:items-start'>
-                            <Button
+                        <div className='flex mt-4 flex-col md:flex-row justify-between max-md:gap-y-2 max-md:items-start'>
+                            {/* <Button
                                 variant='contained'
                                 size="small"
                                 color='error'
@@ -55,10 +55,10 @@ export default function CardList({
                                     className='w-full'>
                                     select
                                 </Link>
-                            </Button>
+                            </Button> */}
 
                             {/* isBooked */}
-                            {/* {item.isBooked === true ? (
+                            {item.isBooked === true ? (
                                 <Button
                                     variant='contained'
                                     size="small"
@@ -81,7 +81,7 @@ export default function CardList({
                                         select
                                     </Link>
                                 </Button>
-                            )} */}
+                            )}
 
                         </div>
                     </div>

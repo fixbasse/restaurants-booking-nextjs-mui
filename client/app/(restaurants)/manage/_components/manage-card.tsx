@@ -7,9 +7,55 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import DeleteIcon from '@mui/icons-material/Delete';
 import dayjs from 'dayjs';
 import { useBookingStore } from '@/hooks/use-booking-store';
+import { bookingDataType } from '@/types/types';
+import axios from 'axios';
 
 export default function ManageBookingCard() {
+    const [data, setData] = React.useState<bookingDataType | any>([]);
     const { cart, remove } = useBookingStore();
+
+    React.useEffect(() => {
+        const getBookingData = async () => {
+            try {
+                const res = await axios.get(`http://localhost:8000/restaurants`);
+                console.log(res.data);
+                setData(res.data)
+
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        getBookingData();
+    }, []);
+
+    const cancelBooked = async (id: string) => {
+        const bookedItem = data.map((item: any) => item.id === id ? {
+            ...item,
+            isBooked: !item.isBooked
+        } : item);
+        setData(bookedItem);
+        console.log(bookedItem);
+
+        const myBooked = bookedItem.id === id;
+        const updateOptions = {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ isBooked: myBooked })
+        };
+
+        const reqUrl = `http://localhost:8000/restaurants/${id}`;
+        await fetch(reqUrl, updateOptions)
+    };
+
+    const handleDelete = (id: any) => {
+        const listItem = cart.filter((item) => item.id)
+        cancelBooked(id);
+        remove(id);
+        // remove(listItem);
+    };
 
     return (
         <div>
@@ -75,9 +121,7 @@ export default function ManageBookingCard() {
                             {/* Button */}
                             <div className='md:ml-auto max-md:px-4 pr-4'>
                                 <Button
-                                    onClick={() => {
-                                        remove(item.id)
-                                    }}
+                                    onClick={() => handleDelete(item.id)}
                                     type='submit'
                                     variant="contained"
                                     color='error'

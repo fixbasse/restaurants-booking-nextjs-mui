@@ -16,4 +16,5 @@ export type bookingDataType = {
     date?: Dayjs | null;
     time?: Dayjs | null;
     img: string;
+    isBooked: boolean;
 } 
