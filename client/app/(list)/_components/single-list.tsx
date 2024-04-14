@@ -18,7 +18,7 @@ export const SingleList = () => {
             } catch (error) {
                 console.log(error);
             }
-        }
+        };
 
         getData();
     }, []);
@@ -29,11 +29,6 @@ export const SingleList = () => {
                 <CardList
                     key={item.name}
                     item={item}
-                    // title={item.name}
-                    // img={item.photos[0]}
-                    // desc={item.description}
-                    // id={item.id}
-                    // isBooked={item.isBooked}
                 />
             ))}
         </div>

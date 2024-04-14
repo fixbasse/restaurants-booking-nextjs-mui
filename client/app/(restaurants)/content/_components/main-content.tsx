@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import axios from 'axios'
 
+// *
 export const MainContent = () => {
     const [data, setData] = useState<restaurantDataTypes | any>([]);
     const params = useParams();

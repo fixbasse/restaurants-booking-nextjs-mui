@@ -2,16 +2,23 @@
 
 import React, { useEffect } from 'react'
 import axios from 'axios';
-import { TextField } from '@mui/material'
-import { TableSize } from './table-size';
-import { Controller, FieldValues, useForm } from 'react-hook-form';
-import { bookingDataType } from '@/types/types';
 import { useParams } from 'next/navigation';
+import { bookingDataType } from '@/types/types';
+
+import {
+    Controller,
+    FieldValues,
+    useForm
+} from 'react-hook-form';
+
+import dayjs, { Dayjs } from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { TextField } from '@mui/material'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import dayjs, { Dayjs } from 'dayjs';
 import { TimePicker } from '@mui/x-date-pickers';
+
+import { TableSize } from './table-size';
 import BookingModal from './modal';
 
 // *

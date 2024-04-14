@@ -18,10 +18,6 @@ export const useBookingStore = create<CartStore>()(
     persist(
         (set, get) => ({
             cart: [],
-            // totalPrice: () => {
-            //     const { cart } = get();
-            //     if (cart.length) return cart.map(item => item.price).reduce((prev, curr) => prev + curr);
-            // },
             count: () => {
                 const { cart } = get();
                 if (cart.length) {

@@ -1,4 +1,4 @@
-This project is using nextJS with tailwindCSS, MUI, json-server and zustand (stage)
+This project is using nextJS and typescript with tailwindCSS, MUI, json-server, react-hook-form (validate form) and zustand (stage management)
 
 -Changes
 1. restaurants_sample -> db.json
