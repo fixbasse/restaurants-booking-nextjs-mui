@@ -6,7 +6,7 @@ This project is using nextJS with tailwindCSS, MUI and json-server
 
 To start a project
 
-1. npm install
+1. cd client npm install
 
 2. cd client and run 'npx json-server db.json --watch --port 8000' (json server to imitate api)
 
